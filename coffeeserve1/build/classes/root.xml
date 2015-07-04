@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+ 
+ <package name="root" namespace="/" extends="tiles-default">
+  	  
+  	  
+  	  <interceptors>
+  	     <interceptor name="logincheck" class="com.city.coffeeserve1.interceptor.UserLoginCheckInterceptor"></interceptor>
+  	 <interceptor-stack name="coffeedefault">
+  	       
+         	<interceptor-ref name="defaultStack"></interceptor-ref>
+         	 <interceptor-ref name="logincheck"></interceptor-ref>
+  	     </interceptor-stack>
+  	  </interceptors>    
+      
+     
+    </package> 
+     
+    <package  name="login" namespace="/" extends="root">  
+      
+      
+    
+    <!--    <action name="login" class="com.city.coffeeserve1.admin.action.UserLoginProcessAction" method="login">
+    
+         
+         <result name="success" type="redirect">/home/tomain.action</result>
+         
+         	<result name="login">/login.jsp</result>
+     
+         
+      </action>
+      
+       <action name="tomain" class="com.city.coffeeserve1.admin.action.HomePageMainAction" method="tomain">
+      		  
+      		<result name="tomain" type="tiles">.homemainpage</result>
+      		 <result name="login"  type="redirect">/login.jsp</result> 
+	         <interceptor-ref name="coffeedefault"/> 
+      		</action>
+      		-->
+      	  <action name="tomain" class="homePageMainAction" method="tomain">
+      		  
+      		<result name="tomain" type="tiles">.homemainpage</result>	
+      		</action>
+      		
+      		 <action name="add" class="foodProcessAction" method="add">
+        <result name="success">success.jsp</result>
+      	</action>
+   
+   </package>
+ 
+ 
+ 
+ 
+   
+
+   
+
+</struts>

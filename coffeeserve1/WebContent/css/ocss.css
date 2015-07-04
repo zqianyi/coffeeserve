@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0}
+ul {list-style: none;}
+a {text-decoration:none;}
+h3{font-size: 18px;color:#635c5c;text-align:left;margin-bottom:10px;padding-bottom:10px; text-shadow:#fff 1px 1px 1px}
+header{width:980px;margin:0 auto;position:relative; z-index:1000; height:100px}
+#logo{width:20%;height:50px;float:left;margin:25px 0 0 0;padding:0;}
+#logo img{ float:left; margin-right:10px;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;-o-transition:All 1s ease;}
+#logo img:hover{transform: rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);}
+#logo h1{ line-height:50px; color:#635c5c;font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, sans-serif; }
+#wrap-menu{ float:right;margin:35px 0 0 0;width:80%;}
+#header-menu{height:24px;float:left;}
+#header-menu li{height:24px;float:left;position:relative; width:130px}
+#header-menu li a{float:left;margin:0 0 0 10px;font-size:14px;color:#666;padding:5px 10px 5px 10px;-moz-border-radius: 3px;	-webkit-border-radius: 3px;	border-radius:3px;text-decoration:none;}
+#header-menu li a:hover{ background:#666;color:#fff;}
+.tu{margin:0 auto;width:980px;}
+.buy_com_tablehead{
+	margin:0 auto;width:980px;
+background:transparent  url(../images/buy_headpic1.gif) repeat-x scroll 0px;
+font-size:16px;
+font-weight:bold;
+line-height:30px;
+text-align:left;
+}
+.buy_com_formhead{
+margin:0 auto;width:980px;
+}

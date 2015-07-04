@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+xmlns:jee="http://www.springframework.org/schema/jee"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+http://www.springframework.org/schema/data/jpa
+http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.1.xsd
+http://www.springframework.org/schema/jee
+http://www.springframework.org/schema/jee/spring-jee.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+
+<bean id="FoodBusinessImpl" class="com.city.coffeeserve1.business.impl.FoodBusinessImpl">
+    <property name="sf" ref="sessionFactory">
+    </property>
+   
+</bean>
+<bean id="MemberBusinessImpl" class="com.city.coffeeserve1.business.impl.MemberBusinessImpl">
+  
+    <property name="sf" ref="sessionFactory">
+    </property>
+   
+   
+</bean>
+  <bean id="FoodkindBusinessImpl" class="com.city.coffeeserve1.business.impl.FoodkindBusinessImpl">
+   
+    <property name="sf" ref="sessionFactory">
+    </property>
+   
+</bean>
+<bean id="target" class="com.city.coffeeserve1.business.impl.BehaveBusinessImpl">
+   
+   <!--   <property name="sf" ref="sessionFactory">
+    </property>-->
+    
+ </bean>
+ <bean id="tx" class="com.city.coffeeserve1.advice.BusinessTransactionAdvice">
+	<property name="sf" ref="sessionFactory"></property>
+</bean>
+<bean id="BehaveBusinessImpl" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="proxyInterfaces" value="com.city.coffeeserve1.business.IBehaveBusiness"></property>
+    <property name="interceptorNames">
+       <list>
+    
+       <value>tx</value>
+  
+       	
+       </list>
+    </property>
+    
+    <property name="target" ref="target"></property>
+    </bean>
+<bean id="sessionFactory" class="com.city.coffeeserve1.factory.HibernateFactory" factory-method="getSessionFactory"></bean>
+
+
+
+<!--  
+<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+ 
+ <tx:advice id="txAdvice" transaction-manager="transactionManager">  
+      
+        <tx:attributes>  
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" />  
+            <tx:method name="*" propagation="REQUIRED"  />  
+        </tx:attributes>  
+   </tx:advice>  
+
+-->
+
+
+
+
+
+
+<bean id="clientPageMainAction" class="com.city.coffeeserve1.admin.action.ClientPageMainAction"  >
+   
+</bean>
+<bean id="foodMainAction" class="com.city.coffeeserve1.admin.action.FoodMainAction" >
+    <property name="fb" ref="FoodBusinessImpl"></property>
+</bean>
+<bean id="foodPhotoShowAction" class="com.city.coffeeserve1.admin.action.FoodPhotoShowAction"  >
+    <property name="fb" ref="FoodBusinessImpl"></property>
+</bean>
+<bean id="foodProcessAction" class="com.city.coffeeserve1.admin.action.FoodProcessAction" >
+    <property name="fb" ref="FoodBusinessImpl"></property>
+</bean>
+<bean id="homePageMainAction" class="com.city.coffeeserve1.admin.action.HomePageMainAction" >
+   
+</bean>
+<bean id="memberMainAction" class="com.city.coffeeserve1.admin.action.MemberMainAction" >
+    <property name="fk" ref="FoodkindBusinessImpl"></property>
+    <property name="bb" ref="BehaveBusinessImpl"></property>
+</bean>
+<bean id="memberProcessAction" class="com.city.coffeeserve1.admin.action.MemberProcessAction" >
+    <property name="mb" ref="MemberBusinessImpl"></property>
+</bean>
+<bean id="userLoginProcessAction" class="com.city.coffeeserve1.admin.action.UserLoginProcessAction"  >
+  
+</bean>
+<bean id="foodFindProcessAction" class="com.city.coffeeserve1.admin.action.FoodFindProcessAction"  >
+   <property name="fb" ref="FoodBusinessImpl"></property>
+</bean>
+</beans>

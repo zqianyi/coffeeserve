@@ -1,0 +1,52 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    
+   
+    <field name="mv.mname">
+        <field-validator type="stringlength">
+        <param name="minLength">3</param>
+        <!--      <param name="maxLength">4</param>-->
+            <param name="trim">true</param> 
+            <message>* 名称大于三位</message>
+        </field-validator>
+    </field>
+     <field name="mv.mpassword">
+        <field-validator type="stringlength">
+        <param name="minLength">3</param>
+            <param name="maxLength">6</param>
+            <param name="trim">true</param> 
+            <message>* 密码长度为在3-6</message>
+        </field-validator>
+    </field>
+    
+    <field name="mv.memail">
+        <field-validator type="email">
+            <message>非法邮箱</message>
+        </field-validator>
+    </field>
+    <validator type="email" >
+    	<param name="email">email</param>
+       <message>非法邮箱</message>
+    </validator>
+    
+  
+     <!-- 
+   <field name="mv.mname">
+     <field-validator type="requiredstring">
+        <message>账号不能为空</message>
+     </field-validator>
+     
+   </field>
+    <field name="mv.mpassword">
+        <field-validator type="requiredstring">
+            <message>密码不能为空</message>
+        </field-validator>
+
+    </field>  
+     -->
+    
+    
+</validators>

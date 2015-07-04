@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.city.coffeeserve1.note.value">
+    <class name="FoodkindValue" table="foodkind">
+        <id name="fkid" column="fkid">
+          
+        </id>
+        <property name="fkname" column="fkname"/>
+      
+        <set name="mvs" table="member" >
+            <key column="fkid" />
+            <one-to-many class="MemberValue" />
+        
+        </set>
+        
+        
+        
+    </class>
+</hibernate-mapping>
+

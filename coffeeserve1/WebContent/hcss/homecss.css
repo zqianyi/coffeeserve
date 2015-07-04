@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+/* header */
+*{ margin:0; padding:0}
+ul {list-style: none;}
+a {text-decoration:none;}
+body{background:url('../images/4.JPG') center no-repeat;}
+
+.header{background-color:#666;width:1300px;height:100px;margin:0 auto;margin-top:20px;}
+#logo{width:20%;height:50px;float:left;margin:25px 0 0 0;padding:0 0 0 50px;}
+#logo img{ float:left; margin-right:10px;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;-o-transition:All 1s ease;}
+#logo img:hover{transform: rotate(360deg);-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);}
+#logo h1{ line-height:50px; color:#FFF;font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, sans-serif; }
+.content{width:1300px;height:100%;margin:0 auto;}
+
+
+.content .sysmenua{float:left;width:150px;height:550px;background:#30383b;/*border-left:2px solid #76af46;*/}
+.content .sysmenua ul li{height:48px;width:150px;}
+.content .sysmenua ul li a{height:48px;width:126px;border-left:4px solid #30383b;background:#30383b;color:#697d84;display:block;padding-left:20px;line-height:48px;}
+.content .sysmenua ul li a:hover{height:48px;width:126px;border-left:4px solid #77b049;background:#282d31;color:#77b049;display:block;padding-left:20px;line-height:48px;}
+.content .sysmenua ul li .current{border-left:4px solid #77b049;background:#282d31;color:#77b049;}
+
+
+.sysmenub{background-color:#FFF;float:left;width:1150px;height:550px;}
+
+
+.datatable table{
+  font:20px Arial, Helvetica, sans-serif;
+  border:1px solid #000000;
+  border-collapse:collapse;
+  width:80%;
+  height:70%;
+  text-align:left;
+  position:absolute;
+  top:100px;
+  
+}
+.datatable td{
+border:0 1px 0 1px;
+
+text-align:center;
+padding:0.3em; 
+}
+.datatable th{
+border:1px solid #CCCCCC;
+background-color:#CCCCCC;
+font-weight:bold;
+text-align:center;
+padding-left:0.3em;
+}
+.datatable caption{
+ font:blod 110% Arial, Helvetica, sans-serif;
+ color:#000000;
+ text-align:center;
+ padding:0.4em 0 0.8em 0;
+ }
+
+.datatable .small{
+ width:10%;
+
+ }
+ #albumlist{
+ list-style-type:none;
+ }
+ #albumlist li{
+ float:left;
+ margin-right:6px;
+ margin-bottom:10px;
+ margin-top:10px;
+ }
+ #albumlist img{
+ display:block;
+ }
+
+.sysmenub.wu{background-color:#FFF;}
+

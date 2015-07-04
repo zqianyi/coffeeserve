@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.city.coffeeserve1.note.value" default-lazy="false">
+    <class name="MemberValue" table="member">
+        <id name="mid" column="mid" >
+           <generator class="native" />
+        </id>
+        
+        <property name="mname" column="mname"/>
+        <property name="mpassword" column="mpassword"/>
+        
+        <property name="memail"  column="memail"/>
+        <property name="msex"  column="msex"/>
+      
+        <many-to-one name="fk" 
+                     class="FoodkindValue" 
+                     column="fkid" 
+                     lazy="false"
+                     
+                     />
+                     
+         <set name="behaves" table="memberbehave" cascade="save-update">
+            <key column="mid" />
+            <many-to-many class="BehaveValue" column="no" />
+        </set>
+                     
+            
+    </class>
+</hibernate-mapping>
+

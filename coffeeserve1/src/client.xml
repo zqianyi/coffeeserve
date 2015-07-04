@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+ 
+ <package name="register" namespace="/client" extends="struts-default">
+  	  
+  	   <action name="toadd" class="memberMainAction" method="toadd">
+        <result name="toadd">register.jsp</result>
+      	</action>
+  	
+    </package> 
+   
+ 
+ <package name="sucess" namespace="/client" extends="struts-default">
+  	  
+   		
+   	<global-results>
+  		<result name="error">/error/sqlexception.jsp</result>
+  		<result name="false">/error/driverexception.jsp</result>
+  	</global-results>
+  	<global-exception-mappings>
+          <exception-mapping result="error" exception="java.sql.SQLException" ></exception-mapping>
+          <exception-mapping result="false" exception="java.lang.Exception"></exception-mapping>
+    </global-exception-mappings>
+
+  	   <action name="add" class="memberProcessAction" method="add">
+        <result name="success">ok.jsp</result>
+        <result name="input" type="chain">
+   <!--      <param name="chain" >toadd</param>-->
+   toadd
+        </result>
+      	</action>
+  	
+    </package> 
+ 
+ 
+     <package name="foodfind" namespace="/client" extends="struts-default">
+        <action name="tofind" class="foodFindProcessAction" method="tofoodfind">
+             <result name="success">order.jsp</result>  
+	   </action>
+	   </package>
+ 
+  
+  <package name="jie" namespace="/" extends="struts-default">
+  	   <interceptors>
+  	     <interceptor name="logincheck" class="com.city.coffeeserve1.interceptor.UserLoginCheckInterceptor"></interceptor>
+  	 <interceptor-stack name="coffeedefault">
+  	       
+         	<interceptor-ref name="defaultStack"></interceptor-ref>
+         	 <interceptor-ref name="logincheck"></interceptor-ref>
+  	     </interceptor-stack>
+  	  </interceptors>    
+  </package>   
+ 
+ <package name="login00" namespace="/" extends="jie">
+ 
+      
+      <action name="login" class="com.city.coffeeserve1.admin.action.UserLoginProcessAction" method="login">
+       <result name="success" type="redirect">/client/tofind</result>
+        <result name="login">/login.jsp/</result>
+      </action>
+ 
+ </package>
+    
+ <package name="client" namespace="/client" extends="jie">
+  	  
+  	   
+      	 
+       <action name="ftomain" class="clientPageMainAction" method="tomain">
+      		  
+      		<result name="tomain">tofind</result>
+      		 <result name="login"  type="redirect">../login.jsp</result> 
+	         <interceptor-ref name="coffeedefault"/> 
+      		</action>
+      	
+      
+    </package> 
+    <package name="photo" namespace="/client" extends="struts-default">
+      <action name="photoshow" class="foodPhotoShowAction" method="show">
+      	
+         <result name="success" type="stream">
+          <!--    <param name="contentType">${contentType}</param>-->
+            <param name="inputName">inputStream</param>
+       <!--       <param name="contentDisposition">inline;</param>-->
+         </result>
+        
+      </action>
+       </package> 
+    
+</struts>
